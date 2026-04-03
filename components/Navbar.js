@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { Menu, X, Shield } from "lucide-react";
+import { Menu, X } from "lucide-react";
 
 const navLinks = [
   { label: "Home", href: "#home" },
@@ -17,19 +17,13 @@ export default function Navbar() {
   const [isMobileOpen, setIsMobileOpen] = useState(false);
 
   useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50);
-    };
+    const handleScroll = () => setIsScrolled(window.scrollY > 40);
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   useEffect(() => {
-    if (isMobileOpen) {
-      document.body.style.overflow = "hidden";
-    } else {
-      document.body.style.overflow = "";
-    }
+    document.body.style.overflow = isMobileOpen ? "hidden" : "";
     return () => {
       document.body.style.overflow = "";
     };
@@ -38,140 +32,314 @@ export default function Navbar() {
   const scrollToSection = (e, href) => {
     e.preventDefault();
     setIsMobileOpen(false);
-    const element = document.querySelector(href);
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth" });
-    }
+    document.querySelector(href)?.scrollIntoView({ behavior: "smooth" });
   };
 
   return (
     <>
+      {/* =====================
+          NAVBAR BAR
+      ===================== */}
       <nav
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-          isScrolled
-            ? "bg-white/95 backdrop-blur-md shadow-lg border-b border-gray-100"
-            : "bg-transparent"
-        }`}
+        className="fixed top-0 left-0 right-0 z-50 transition-all duration-300"
+        style={{
+          background: isScrolled
+            ? "rgba(247,248,250,0.92)"
+            : "rgba(247,248,250,0.85)",
+          backdropFilter: "blur(14px)",
+          WebkitBackdropFilter: "blur(14px)",
+          borderBottom: isScrolled
+            ? "1px solid rgba(10,31,63,0.08)"
+            : "1px solid transparent",
+          boxShadow: isScrolled ? "0 1px 24px rgba(10,31,63,0.06)" : "none",
+        }}
       >
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between h-20">
-            {/* Logo */}
+        <div className="max-w-7xl mx-auto px-5 sm:px-8 lg:px-10">
+          <div className="flex items-center justify-between h-[72px]">
+            {/* ── Logo ── */}
             <a
               href="#home"
               onClick={(e) => scrollToSection(e, "#home")}
-              className="flex items-center gap-3 group"
+              className="flex items-center gap-3 group flex-shrink-0"
             >
               <div
-                className={`w-10 h-10 rounded-lg flex items-center justify-center transition-colors ${
-                  isScrolled ? "bg-brand-orange" : "bg-brand-orange"
-                }`}
+                className="w-9 h-9 rounded-lg flex items-center justify-center transition-colors duration-200"
+                style={{ background: "#E8531E" }}
               >
-                <Shield className="w-6 h-6 text-white" />
+                <span className="text-white font-black text-sm">L</span>
               </div>
-              <div className="flex flex-col">
+              <div className="flex flex-col leading-none">
                 <span
-                  className={`font-heading font-bold text-lg leading-tight transition-colors ${
-                    isScrolled ? "text-brand-navy" : "text-white"
-                  }`}
+                  className="font-heading font-bold text-[15px] transition-colors duration-200"
+                  style={{ color: "#0A1F3F" }}
                 >
                   Lionden
                 </span>
                 <span
-                  className={`text-[10px] tracking-widest uppercase transition-colors ${
-                    isScrolled ? "text-brand-slate" : "text-gray-400"
-                  }`}
+                  className="text-[9px] tracking-[0.2em] uppercase transition-colors duration-200"
+                  style={{ color: "rgba(10,31,63,0.40)" }}
                 >
                   Technologies
                 </span>
               </div>
             </a>
 
-            {/* Desktop Navigation */}
+            {/* ── Desktop Nav Links ── */}
             <div className="hidden lg:flex items-center gap-1">
               {navLinks.map((link) => (
                 <a
                   key={link.label}
                   href={link.href}
                   onClick={(e) => scrollToSection(e, link.href)}
-                  className={`px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 hover:bg-white/10 ${
-                    isScrolled
-                      ? "text-gray-700 hover:text-brand-navy hover:bg-gray-100"
-                      : "text-gray-300 hover:text-white"
-                  }`}
+                  className="relative px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 group"
+                  style={{ color: "rgba(10,31,63,0.55)" }}
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.color = "#0A1F3F";
+                    e.currentTarget.style.background = "rgba(10,31,63,0.05)";
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.color = "rgba(10,31,63,0.55)";
+                    e.currentTarget.style.background = "transparent";
+                  }}
                 >
                   {link.label}
                 </a>
               ))}
+            </div>
+
+            {/* ── Desktop CTA ── */}
+            <div className="hidden lg:flex items-center gap-4">
+              {/* Secondary: subtle text link */}
+              <a
+                href="tel:+919810209261"
+                className="text-sm font-medium transition-colors duration-200"
+                style={{ color: "rgba(10,31,63,0.45)" }}
+                onMouseEnter={(e) => (e.currentTarget.style.color = "#0A1F3F")}
+                onMouseLeave={(e) =>
+                  (e.currentTarget.style.color = "rgba(10,31,63,0.45)")
+                }
+              >
+                +91-9810209261
+              </a>
+
+              {/* Divider */}
+              <div
+                className="h-5 w-px"
+                style={{ background: "rgba(10,31,63,0.12)" }}
+              />
+
+              {/* Primary CTA */}
               <a
                 href="#contact"
                 onClick={(e) => scrollToSection(e, "#contact")}
-                className="ml-4 px-6 py-2.5 bg-brand-orange hover:bg-brand-orange-hover text-white text-sm font-semibold rounded-lg transition-all duration-200 hover:shadow-lg hover:shadow-brand-orange/25 hover:-translate-y-0.5"
+                className="text-sm font-semibold rounded-xl transition-all duration-200"
+                style={{
+                  padding: "10px 22px",
+                  background: "#0A1F3F",
+                  color: "#fff",
+                  boxShadow: "0 2px 12px rgba(10,31,63,0.15)",
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.background = "#E8531E";
+                  e.currentTarget.style.boxShadow =
+                    "0 4px 20px rgba(232,83,30,0.25)";
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.background = "#0A1F3F";
+                  e.currentTarget.style.boxShadow =
+                    "0 2px 12px rgba(10,31,63,0.15)";
+                }}
               >
                 Get a Free Assessment
               </a>
             </div>
 
-            {/* Mobile Menu Button */}
-            <button
-              onClick={() => setIsMobileOpen(!isMobileOpen)}
-              className={`lg:hidden p-2 rounded-lg transition-colors ${
-                isScrolled
-                  ? "text-brand-navy hover:bg-gray-100"
-                  : "text-white hover:bg-white/10"
-              }`}
-              aria-label="Toggle menu"
-            >
-              {isMobileOpen ? (
-                <X className="w-6 h-6" />
-              ) : (
-                <Menu className="w-6 h-6" />
-              )}
-            </button>
+            {/* ── Mobile: phone + hamburger ── */}
+            <div className="lg:hidden flex items-center gap-3">
+              <a
+                href="tel:+919810209261"
+                className="hidden sm:flex text-xs font-medium"
+                style={{ color: "rgba(10,31,63,0.50)" }}
+              >
+                +91-9810209261
+              </a>
+
+              <button
+                onClick={() => setIsMobileOpen(!isMobileOpen)}
+                className="w-10 h-10 rounded-xl flex items-center justify-center transition-colors duration-200"
+                style={{
+                  background: isMobileOpen
+                    ? "rgba(10,31,63,0.08)"
+                    : "transparent",
+                  color: "#0A1F3F",
+                }}
+                aria-label="Toggle menu"
+              >
+                {isMobileOpen ? (
+                  <X className="w-5 h-5" />
+                ) : (
+                  <Menu className="w-5 h-5" />
+                )}
+              </button>
+            </div>
           </div>
         </div>
       </nav>
 
-      {/* Mobile Menu Overlay */}
+      {/* =====================
+          MOBILE MENU
+      ===================== */}
+      {/* Backdrop */}
       <div
         className={`fixed inset-0 z-40 lg:hidden transition-all duration-300 ${
           isMobileOpen
             ? "opacity-100 pointer-events-auto"
             : "opacity-0 pointer-events-none"
         }`}
-      >
-        <div
-          className="absolute inset-0 bg-black/50 backdrop-blur-sm"
-          onClick={() => setIsMobileOpen(false)}
-        />
-        <div
-          className={`absolute right-0 top-0 h-full w-80 max-w-[85vw] bg-brand-navy shadow-2xl transition-transform duration-300 ${
-            isMobileOpen ? "translate-x-0" : "translate-x-full"
-          }`}
-        >
-          <div className="flex flex-col h-full pt-24 px-6">
-            {navLinks.map((link, i) => (
-              <a
-                key={link.label}
-                href={link.href}
-                onClick={(e) => scrollToSection(e, link.href)}
-                className="py-3 text-lg text-gray-300 hover:text-white border-b border-white/10 transition-colors"
-                style={{ animationDelay: `${i * 50}ms` }}
-              >
-                {link.label}
-              </a>
-            ))}
-            <a
-              href="#contact"
-              onClick={(e) => scrollToSection(e, "#contact")}
-              className="mt-8 px-6 py-3 bg-brand-orange text-white text-center font-semibold rounded-lg hover:bg-brand-orange-hover transition-colors"
-            >
-              Get a Free Assessment
-            </a>
+        style={{
+          background: "rgba(10,31,63,0.25)",
+          backdropFilter: "blur(4px)",
+        }}
+        onClick={() => setIsMobileOpen(false)}
+      />
 
-            <div className="mt-auto pb-8">
-              <p className="text-gray-500 text-sm">📞 +91-9810209261</p>
-              <p className="text-gray-500 text-sm mt-1">📧 pankaj@lionden.in</p>
+      {/* Drawer */}
+      <div
+        className={`fixed top-0 right-0 bottom-0 z-50 lg:hidden flex flex-col transition-transform duration-300 ease-in-out ${
+          isMobileOpen ? "translate-x-0" : "translate-x-full"
+        }`}
+        style={{
+          width: "min(360px, 90vw)",
+          background: "#FFFFFF",
+          boxShadow: "-8px 0 40px rgba(10,31,63,0.12)",
+        }}
+      >
+        {/* Drawer header */}
+        <div
+          className="flex items-center justify-between px-6 py-5"
+          style={{ borderBottom: "1px solid rgba(10,31,63,0.07)" }}
+        >
+          {/* Logo inside drawer */}
+          <div className="flex items-center gap-3">
+            <div
+              className="w-9 h-9 rounded-lg flex items-center justify-center"
+              style={{ background: "#E8531E" }}
+            >
+              <span className="text-white font-black text-sm">L</span>
             </div>
+            <div className="flex flex-col leading-none">
+              <span
+                className="font-heading font-bold text-[15px]"
+                style={{ color: "#0A1F3F" }}
+              >
+                Lionden
+              </span>
+              <span
+                className="text-[9px] tracking-[0.2em] uppercase"
+                style={{ color: "rgba(10,31,63,0.40)" }}
+              >
+                Technologies
+              </span>
+            </div>
+          </div>
+
+          <button
+            onClick={() => setIsMobileOpen(false)}
+            className="w-9 h-9 rounded-xl flex items-center justify-center"
+            style={{ background: "rgba(10,31,63,0.05)", color: "#0A1F3F" }}
+            aria-label="Close menu"
+          >
+            <X className="w-5 h-5" />
+          </button>
+        </div>
+
+        {/* Nav links */}
+        <div className="flex-1 overflow-y-auto py-4 px-4">
+          {navLinks.map((link, i) => (
+            <a
+              key={link.label}
+              href={link.href}
+              onClick={(e) => scrollToSection(e, link.href)}
+              className="flex items-center justify-between w-full rounded-xl px-4 py-4 transition-all duration-150 group"
+              style={{
+                color: "#0A1F3F",
+                animationDelay: `${i * 40}ms`,
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.background = "rgba(10,31,63,0.04)";
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.background = "transparent";
+              }}
+            >
+              <span className="font-medium text-[15px]">{link.label}</span>
+              <div
+                className="w-6 h-6 rounded-lg flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity"
+                style={{ background: "rgba(10,31,63,0.06)" }}
+              >
+                <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
+                  <path
+                    d="M2.5 6H9.5M9.5 6L7 3.5M9.5 6L7 8.5"
+                    stroke="currentColor"
+                    strokeWidth="1.5"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
+                </svg>
+              </div>
+            </a>
+          ))}
+        </div>
+
+        {/* Drawer footer */}
+        <div
+          className="px-5 py-6"
+          style={{ borderTop: "1px solid rgba(10,31,63,0.07)" }}
+        >
+          {/* Primary CTA */}
+          <a
+            href="#contact"
+            onClick={(e) => scrollToSection(e, "#contact")}
+            className="w-full flex items-center justify-center gap-2 font-semibold rounded-xl mb-3 transition-all duration-200"
+            style={{
+              padding: "14px 20px",
+              background: "#0A1F3F",
+              color: "#fff",
+              fontSize: "15px",
+              boxShadow: "0 4px 20px rgba(10,31,63,0.18)",
+            }}
+          >
+            Get a Free Assessment
+          </a>
+
+          {/* Contact info */}
+          <div className="mt-4 space-y-2">
+            <a
+              href="tel:+919810209261"
+              className="flex items-center gap-2 text-sm"
+              style={{ color: "rgba(10,31,63,0.50)" }}
+            >
+              <span
+                className="w-7 h-7 rounded-lg flex items-center justify-center text-xs"
+                style={{ background: "rgba(10,31,63,0.05)" }}
+              >
+                📞
+              </span>
+              +91-9810209261
+            </a>
+            <a
+              href="mailto:pankaj@lionden.in"
+              className="flex items-center gap-2 text-sm"
+              style={{ color: "rgba(10,31,63,0.50)" }}
+            >
+              <span
+                className="w-7 h-7 rounded-lg flex items-center justify-center text-xs"
+                style={{ background: "rgba(10,31,63,0.05)" }}
+              >
+                ✉️
+              </span>
+              pankaj@lionden.in
+            </a>
           </div>
         </div>
       </div>

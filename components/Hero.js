@@ -1,134 +1,286 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import {
-  ShieldCheck,
-  Users,
-  Award,
-  ArrowRight,
-  ChevronDown,
-} from "lucide-react";
-import HeroBackground from "./HeroBackground";
+import { ArrowRight, ArrowDown } from "lucide-react";
 
 export default function Hero() {
   const [isLoaded, setIsLoaded] = useState(false);
 
-  useEffect(() => {
-    setIsLoaded(true);
-  }, []);
+  useEffect(() => setIsLoaded(true), []);
 
   const scrollToSection = (e, href) => {
     e.preventDefault();
-    const element = document.querySelector(href);
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth" });
-    }
+    document.querySelector(href)?.scrollIntoView({ behavior: "smooth" });
   };
 
   return (
     <section
       id="home"
-      className="relative min-h-screen flex items-center overflow-hidden bg-brand-navy"
+      className="relative min-h-screen flex flex-col overflow-hidden"
+      style={{ background: "#F7F8FA" }}
     >
-      {/* Background */}
-      <HeroBackground />
+      {/* =====================
+          MAIN GRID
+          pt accounts for fixed navbar height (80px)
+      ===================== */}
+      <div className="relative z-10 flex-1 grid lg:grid-cols-2 pt-20">
+        {/* ── LEFT SIDE ── */}
+        <div
+          className="flex flex-col justify-between px-6 sm:px-10 lg:px-14 xl:px-20 pt-12 pb-10 lg:pt-16 lg:pb-14"
+          style={{ background: "#F7F8FA" }}
+        >
+          <div>
+            {/* Small label */}
+            <div
+              className={`flex items-center gap-3 mb-12 lg:mb-16 transition-all duration-700 ${
+                isLoaded
+                  ? "opacity-100 translate-y-0"
+                  : "opacity-0 translate-y-3"
+              }`}
+            >
+              <div
+                className="w-6 h-px"
+                style={{ background: "rgba(10,31,63,0.25)" }}
+              />
+              <span
+                className="text-[11px] tracking-[0.25em] uppercase font-medium"
+                style={{ color: "rgba(10,31,63,0.45)" }}
+              >
+                Since 2016 · India
+              </span>
+            </div>
 
-      {/* Shield Watermark */}
-      <div className="absolute right-[5%] top-1/2 -translate-y-1/2 opacity-[0.03] pointer-events-none hidden lg:block">
-        <ShieldCheck className="w-[500px] h-[500px] text-white" />
-      </div>
+            {/* Statement headline */}
+            <div className="space-y-0">
+              {/* Line 1 — light */}
+              <div
+                className={`transition-all duration-700 delay-100 ${
+                  isLoaded
+                    ? "opacity-100 translate-y-0"
+                    : "opacity-0 translate-y-4"
+                }`}
+              >
+                <p
+                  className="font-heading leading-[1.12]"
+                  style={{
+                    fontSize: "clamp(28px, 3.4vw, 52px)",
+                    fontWeight: 300,
+                    color: "rgba(10,31,63,0.50)",
+                    letterSpacing: "-0.02em",
+                  }}
+                >
+                  Most businesses discover
+                </p>
+                <p
+                  className="font-heading leading-[1.12]"
+                  style={{
+                    fontSize: "clamp(28px, 3.4vw, 52px)",
+                    fontWeight: 300,
+                    color: "rgba(10,31,63,0.50)",
+                    letterSpacing: "-0.02em",
+                  }}
+                >
+                  their security gaps
+                </p>
+              </div>
 
-      {/* Content */}
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-32 lg:py-0 w-full">
-        <div className="max-w-3xl">
-          {/* Pre-headline */}
-          <div
-            className={`flex items-center gap-3 mb-6 transition-all duration-700 delay-100 ${
-              isLoaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
-            }`}
-          >
-            <div className="w-12 h-px bg-gradient-to-r from-brand-orange to-brand-cyan" />
-            <span className="text-brand-orange text-sm font-semibold tracking-[0.2em] uppercase">
-              Collaborate · Innovate · Execute
-            </span>
+              {/* Line 2 — bold underlined */}
+              <div
+                className={`transition-all duration-700 delay-200 ${
+                  isLoaded
+                    ? "opacity-100 translate-y-0"
+                    : "opacity-0 translate-y-4"
+                }`}
+              >
+                <p
+                  className="font-heading leading-[1.12] mt-1"
+                  style={{
+                    fontSize: "clamp(32px, 4vw, 60px)",
+                    fontWeight: 800,
+                    color: "#0A1F3F",
+                    letterSpacing: "-0.025em",
+                    textDecorationLine: "underline",
+                    textDecorationColor: "#E8531E",
+                    textDecorationThickness: "3px",
+                    textUnderlineOffset: "6px",
+                  }}
+                >
+                  after the breach.
+                </p>
+              </div>
+
+              {/* Line 3 — medium */}
+              <div
+                className={`mt-5 transition-all duration-700 delay-300 ${
+                  isLoaded
+                    ? "opacity-100 translate-y-0"
+                    : "opacity-0 translate-y-4"
+                }`}
+              >
+                <p
+                  className="font-heading leading-[1.12]"
+                  style={{
+                    fontSize: "clamp(28px, 3.4vw, 52px)",
+                    fontWeight: 500,
+                    color: "#0A1F3F",
+                    letterSpacing: "-0.02em",
+                  }}
+                >
+                  We make sure
+                </p>
+                <p
+                  className="font-heading leading-[1.12]"
+                  style={{
+                    fontSize: "clamp(28px, 3.4vw, 52px)",
+                    fontWeight: 500,
+                    color: "#0A1F3F",
+                    letterSpacing: "-0.02em",
+                  }}
+                >
+                  you find them first.
+                </p>
+              </div>
+            </div>
           </div>
 
-          {/* Headline */}
-          <h1
-            className={`font-heading font-extrabold text-4xl sm:text-5xl lg:text-6xl xl:text-7xl text-white leading-[1.1] mb-6 transition-all duration-700 delay-200 ${
-              isLoaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
-            }`}
-          >
-            Your Trusted Partner for{" "}
-            <span className="gradient-text">Cybersecurity</span> &{" "}
-            <span className="gradient-text">IT Infrastructure</span>
-          </h1>
-
-          {/* Subheadline */}
-          <p
-            className={`text-gray-400 text-lg sm:text-xl leading-relaxed max-w-2xl mb-10 transition-all duration-700 delay-300 ${
-              isLoaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
-            }`}
-          >
-            We help enterprises reduce cyber risk, optimize network performance,
-            and build future-ready IT ecosystems — end to end.
-          </p>
-
-          {/* CTAs */}
+          {/* Bottom scroll cue */}
           <div
-            className={`flex flex-col sm:flex-row gap-4 mb-14 transition-all duration-700 delay-[400ms] ${
+            className={`mt-12 lg:mt-0 transition-all duration-700 delay-500 ${
               isLoaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
             }`}
           >
-            <a
-              href="#contact"
-              onClick={(e) => scrollToSection(e, "#contact")}
-              className="group inline-flex items-center justify-center gap-2 px-8 py-4 bg-brand-orange hover:bg-brand-orange-hover text-white font-semibold rounded-xl transition-all duration-200 hover:shadow-xl hover:shadow-brand-orange/25 hover:-translate-y-0.5"
-            >
-              Schedule a Free Consultation
-              <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-            </a>
+            <div
+              className="mb-5 h-px w-full"
+              style={{ background: "rgba(10,31,63,0.08)" }}
+            />
             <a
               href="#services"
               onClick={(e) => scrollToSection(e, "#services")}
-              className="inline-flex items-center justify-center gap-2 px-8 py-4 border-2 border-white/15 text-white font-semibold rounded-xl hover:bg-white/5 hover:border-white/30 transition-all duration-200"
+              className="group inline-flex items-center gap-3 text-sm font-medium transition-colors duration-200"
+              style={{ color: "rgba(10,31,63,0.40)" }}
+              onMouseEnter={(e) => (e.currentTarget.style.color = "#0A1F3F")}
+              onMouseLeave={(e) =>
+                (e.currentTarget.style.color = "rgba(10,31,63,0.40)")
+              }
             >
-              Explore Our Services
+              <ArrowDown className="w-4 h-4 group-hover:translate-y-0.5 transition-transform" />
+              Explore our approach
             </a>
           </div>
+        </div>
 
-          {/* Trust Indicators */}
+        {/* ── RIGHT SIDE ── */}
+        <div
+          className="relative flex items-center justify-center px-6 sm:px-10 lg:px-12 xl:px-16 py-10 lg:py-0"
+          style={{ background: "#FFFFFF" }}
+        >
+          {/* Thin vertical rule */}
           <div
-            className={`flex flex-wrap gap-x-8 gap-y-3 transition-all duration-700 delay-500 ${
-              isLoaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
+            className="hidden lg:block absolute left-0 top-16 bottom-16 w-px"
+            style={{ background: "rgba(10,31,63,0.07)" }}
+          />
+
+          {/* Card */}
+          <div
+            className={`w-full max-w-[420px] transition-all duration-1000 delay-400 ${
+              isLoaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
             }`}
           >
-            <div className="flex items-center gap-2 text-gray-400 text-sm">
-              <Award className="w-4 h-4 text-brand-cyan" />
-              <span>30+ Years Combined Expertise</span>
+            {/* Orange accent */}
+            <div
+              className="h-[3px] w-12 rounded-full mb-8"
+              style={{ background: "#E8531E" }}
+            />
+
+            {/* Card body */}
+            <div
+              className="rounded-2xl p-7 sm:p-9"
+              style={{
+                background: "#F7F8FA",
+                border: "1px solid rgba(10,31,63,0.07)",
+                boxShadow:
+                  "0 2px 4px rgba(10,31,63,0.04), 0 12px 40px rgba(10,31,63,0.07)",
+              }}
+            >
+              <div
+                className="text-[11px] uppercase tracking-[0.22em] font-medium mb-5"
+                style={{ color: "#E8531E" }}
+              >
+                The reality
+              </div>
+
+              <p
+                className="font-heading leading-[1.35] mb-4"
+                style={{
+                  fontSize: "clamp(20px, 2vw, 28px)",
+                  fontWeight: 700,
+                  color: "#0A1F3F",
+                  letterSpacing: "-0.02em",
+                }}
+              >
+                &ldquo;After the breach&rdquo; is not a risk.{" "}
+                <span style={{ color: "#E8531E" }}>It&apos;s a failure.</span>
+              </p>
+
+              <p
+                className="leading-relaxed mb-7"
+                style={{
+                  fontSize: "15px",
+                  color: "rgba(10,31,63,0.55)",
+                  lineHeight: "1.75",
+                }}
+              >
+                We exist so it never happens to you. From network security to
+                endpoint protection — our team identifies threats before they
+                become incidents.
+              </p>
+
+              <div
+                className="mb-6 h-px"
+                style={{ background: "rgba(10,31,63,0.08)" }}
+              />
+
+              {/* CTA */}
+              <a
+                href="#contact"
+                onClick={(e) => scrollToSection(e, "#contact")}
+                className="group w-full inline-flex items-center justify-between font-semibold rounded-xl transition-all duration-200"
+                style={{
+                  padding: "14px 20px",
+                  background: "#0A1F3F",
+                  color: "#fff",
+                  fontSize: "15px",
+                  boxShadow: "0 4px 20px rgba(10,31,63,0.18)",
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.background = "#E8531E";
+                  e.currentTarget.style.boxShadow =
+                    "0 8px 28px rgba(232,83,30,0.30)";
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.background = "#0A1F3F";
+                  e.currentTarget.style.boxShadow =
+                    "0 4px 20px rgba(10,31,63,0.18)";
+                }}
+              >
+                Schedule a Call
+                <div
+                  className="w-8 h-8 rounded-lg flex items-center justify-center flex-shrink-0"
+                  style={{ background: "rgba(255,255,255,0.12)" }}
+                >
+                  <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
+                </div>
+              </a>
             </div>
-            <div className="flex items-center gap-2 text-gray-400 text-sm">
-              <Users className="w-4 h-4 text-brand-cyan" />
-              <span>9+ Technology Alliances</span>
-            </div>
-            <div className="flex items-center gap-2 text-gray-400 text-sm">
-              <ShieldCheck className="w-4 h-4 text-brand-cyan" />
-              <span>End-to-End Ownership</span>
-            </div>
+
+            <p
+              className="mt-5 text-xs text-center"
+              style={{ color: "rgba(10,31,63,0.30)" }}
+            >
+              Cybersecurity · Network Optimization · IT Infrastructure
+            </p>
           </div>
         </div>
-      </div>
-
-      {/* Scroll Indicator */}
-      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce">
-        <a
-          href="#partners"
-          onClick={(e) => scrollToSection(e, "#partners")}
-          className="text-white/20 hover:text-white/50 transition-colors"
-          aria-label="Scroll down"
-        >
-          <ChevronDown className="w-8 h-8" />
-        </a>
       </div>
     </section>
   );
