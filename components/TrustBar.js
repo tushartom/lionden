@@ -4,152 +4,115 @@ import Image from "next/image";
 import AnimatedSection from "./AnimatedSection";
 
 const alliances = [
-  {
-    name: "Palo Alto Networks",
-    logo: "/logos/paloalto.jpeg",
-    width: 140,
-    height: 40,
-  },
-  {
-    name: "Forescout",
-    logo: "/logos/forescout.png",
-    width: 130,
-    height: 36,
-  },
-  {
-    name: "Ativion",
-    logo: "/logos/ativion.png",
-    width: 120,
-    height: 36,
-  },
-  {
-    name: "NetApp",
-    logo: "/logos/netapp.jpeg",
-    width: 110,
-    height: 36,
-  },
-  {
-    name: "F5",
-    logo: "/logos/f5.png",
-    width: 60,
-    height: 40,
-  },
-  {
-    name: "ContentKeeper",
-    logo: "/logos/contentkeeper.png",
-    width: 140,
-    height: 36,
-  },
-  {
-    name: "Cavisson",
-    logo: "/logos/cavisson.png",
-    width: 130,
-    height: 36,
-  },
-  {
-    name: "Infoblox",
-    logo: "/logos/infoblox.png",
-    width: 120,
-    height: 36,
-  },
-  {
-    name: "Netop",
-    logo: "/logos/netop.jpeg",
-    width: 100,
-    height: 36,
-  },
+  { name: "Palo Alto Networks", logo: "/logos/paloalto.jpeg" },
+  { name: "Forescout", logo: "/logos/forescout.png" },
+  { name: "Ativion", logo: "/logos/ativion.png" },
+  { name: "NetApp", logo: "/logos/netapp.jpeg", scale: "scale-110" }, // Slight boost
+  { name: "F5", logo: "/logos/f5.png", scale: "scale-[1.65]" }, // Significant boost for the circle
+  { name: "ContentKeeper", logo: "/logos/contentkeeper.png" },
+  { name: "Cavisson", logo: "/logos/cavisson.png" },
+  { name: "Infoblox", logo: "/logos/infoblox.png" },
+  { name: "Netop", logo: "/logos/netop.jpeg" },
 ];
 
-function AllianceLogo({ alliance, className = "" }) {
+function LogoTile({ alliance, delay = 0 }) {
   return (
-    <div
-      className={`group flex items-center justify-center p-4 rounded-xl hover:bg-gray-50 transition-all duration-300 cursor-default ${className}`}
-    >
-      <div className="grayscale group-hover:grayscale-0 opacity-50 group-hover:opacity-100 transition-all duration-500">
-        <Image
-          src={alliance.logo}
-          alt={`${alliance.name} logo`}
-          width={alliance.width}
-          height={alliance.height}
-          className="object-contain h-10 w-auto"
-          loading="lazy"
-        />
+    <AnimatedSection animation="fade-up" delay={delay} className="h-full">
+      <div
+        className="group relative flex items-center justify-center rounded-2xl transition-all duration-300 ease-out cursor-default 
+                   h-[100px] md:h-[130px] px-6 py-4 w-full"
+        style={{
+          background: "rgba(255,255,255,0.9)",
+          border: "1px solid rgba(10,31,63,0.07)",
+          boxShadow: "0 1px 8px rgba(10,31,63,0.05)",
+        }}
+        onMouseEnter={(e) => {
+          e.currentTarget.style.transform = "scale(1.03) translateY(-2px)";
+          e.currentTarget.style.boxShadow =
+            "0 12px 36px rgba(10,31,63,0.11), 0 0 0 1.5px rgba(232,83,30,0.2)";
+          e.currentTarget.style.background = "#fff";
+        }}
+        onMouseLeave={(e) => {
+          e.currentTarget.style.transform = "scale(1) translateY(0)";
+          e.currentTarget.style.boxShadow = "0 1px 8px rgba(10,31,63,0.05)";
+          e.currentTarget.style.background = "rgba(255,255,255,0.9)";
+        }}
+      >
+        {/* Inner container with relative positioning for Next.js Image 'fill' */}
+        <div className="relative w-full h-full max-h-[45px] md:max-h-[55px]">
+          <Image
+            src={alliance.logo}
+            alt={`${alliance.name} logo`}
+            fill
+            sizes="(max-width: 768px) 40vw, 20vw"
+            className={`object-contain transition-transform duration-300 ${alliance.scale || "scale-100"}`}
+            loading="lazy"
+          />
+        </div>
       </div>
-    </div>
+    </AnimatedSection>
   );
 }
 
 export default function TrustBar() {
   return (
-    <section id="partners" className="py-14 bg-white border-b border-gray-100">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section
+      id="partners"
+      className="py-20 lg:py-28 relative overflow-hidden bg-white border-b border-gray-100"
+    >
+      {/* Subtle background radial */}
+      <div
+        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[900px] h-[600px] rounded-full pointer-events-none"
+        style={{
+          background:
+            "radial-gradient(ellipse, rgba(232,83,30,0.04) 0%, transparent 65%)",
+        }}
+      />
+
+      <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Heading */}
-        <AnimatedSection animation="fade-in">
-          <p className="text-center text-md font-medium text-brand-slate tracking-widest uppercase mb-10">
-            Strategic Technology Alliances
-          </p>
+        <AnimatedSection animation="fade-up">
+          <div className="text-center mb-16">
+            <div className="flex items-center justify-center gap-4 mb-5">
+              <div className="h-px w-8 bg-brand-orange/40" />
+              <span className="text-brand-orange text-xs font-semibold tracking-[0.25em] uppercase">
+                Our Alliances
+              </span>
+              <div className="h-px w-8 bg-brand-orange/40" />
+            </div>
+            <h2 className="font-heading font-bold text-2xl sm:text-4xl text-brand-navy">
+              Backed by Global Technology Leaders
+            </h2>
+          </div>
         </AnimatedSection>
 
-        {/* ======= Desktop Grid ======= */}
-        <div className="hidden md:grid grid-cols-3 lg:grid-cols-5 gap-4 items-center mb-4">
-          {/* First row — 5 logos */}
-          {alliances.slice(0, 5).map((alliance, i) => (
-            <AnimatedSection
-              key={alliance.name}
-              animation="fade-up"
-              delay={i * 80}
-            >
-              <AllianceLogo alliance={alliance} />
-            </AnimatedSection>
-          ))}
-        </div>
+        {/* Standardized Responsive Grid:
+          - Mobile: 2 columns (per your request)
+          - Tablet: 3 columns
+          - Desktop: 5 columns (for row 1) and 4 columns (for row 2)
+        */}
+        <div className="flex flex-col gap-4">
+          {/* Top Row logic for Desktop: first 5 */}
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
+            {alliances.slice(0, 5).map((a, i) => (
+              <LogoTile key={a.name} alliance={a} delay={i * 50} />
+            ))}
 
-        {/* Second row — 4 logos centered */}
-        <div className="hidden md:grid grid-cols-3 lg:grid-cols-4 gap-4 items-center max-w-4xl mx-auto">
-          {alliances.slice(5).map((alliance, i) => (
-            <AnimatedSection
-              key={alliance.name}
-              animation="fade-up"
-              delay={(i + 5) * 80}
-            >
-              <AllianceLogo alliance={alliance} />
-            </AnimatedSection>
-          ))}
-        </div>
+            {/* Tablet/Mobile continue here automatically */}
+            <div className="contents lg:hidden">
+              {alliances.slice(5).map((a, i) => (
+                <LogoTile key={a.name} alliance={a} delay={(i + 5) * 50} />
+              ))}
+            </div>
+          </div>
 
-        {/* ======= Mobile Auto-Scroll Carousel ======= */}
-        <div className="md:hidden overflow-hidden relative">
-          {/* Fade edges */}
-          <div className="absolute left-0 top-0 bottom-0 w-12 bg-gradient-to-r from-white to-transparent z-10 pointer-events-none" />
-          <div className="absolute right-0 top-0 bottom-0 w-12 bg-gradient-to-l from-white to-transparent z-10 pointer-events-none" />
-
-          <div className="flex animate-logo-scroll gap-10 py-2">
-            {/* Duplicate the list for seamless loop */}
-            {[...alliances, ...alliances].map((alliance, i) => (
-              <div
-                key={`${alliance.name}-${i}`}
-                className="flex-shrink-0 flex items-center justify-center px-2"
-              >
-                <Image
-                  src={alliance.logo}
-                  alt={`${alliance.name} logo`}
-                  width={alliance.width}
-                  height={alliance.height}
-                  className="object-contain h-8 w-auto opacity-60"
-                  loading="lazy"
-                />
-              </div>
+          {/* Bottom Row logic for Desktop: remaining 4 */}
+          <div className="hidden lg:grid grid-cols-4 gap-4 max-w-[900px] mx-auto w-full">
+            {alliances.slice(5).map((a, i) => (
+              <LogoTile key={a.name} alliance={a} delay={(i + 5) * 50} />
             ))}
           </div>
         </div>
-
-        {/* Bottom Text */}
-        <AnimatedSection animation="fade-in" delay={400}>
-          <p className="text-center text-sm text-gray-400 mt-10">
-            We partner with world-class technology vendors to deliver
-            best-in-class solutions.
-          </p>
-        </AnimatedSection>
       </div>
     </section>
   );
