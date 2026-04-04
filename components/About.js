@@ -134,8 +134,8 @@ export default function About() {
           <AnimatedSection animation="fade-up" delay={200}>
             <div className="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-shadow duration-300 border border-gray-100 h-full">
               <div className="flex items-center gap-4 mb-4">
-                <div className="w-12 h-12 rounded-xl bg-brand-cyan/10 flex items-center justify-center">
-                  <Telescope className="w-6 h-6 text-brand-cyan" />
+                <div className="w-12 h-12 rounded-xl bg-brand-orange/10 flex items-center justify-center">
+                  <Telescope className="w-6 h-6 text-brand-orange" />
                 </div>
                 <h3 className="font-heading font-bold text-xl text-brand-navy">
                   Our Vision

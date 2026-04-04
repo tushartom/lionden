@@ -22,7 +22,7 @@ function LogoTile({ alliance, delay = 0 }) {
         className="group relative flex items-center justify-center rounded-2xl transition-all duration-300 ease-out cursor-default 
                    h-[100px] md:h-[130px] px-6 py-4 w-full"
         style={{
-          background: "rgba(255,255,255,0.9)",
+          background: "#fff",
           border: "1px solid rgba(10,31,63,0.07)",
           boxShadow: "0 1px 8px rgba(10,31,63,0.05)",
         }}
@@ -35,7 +35,7 @@ function LogoTile({ alliance, delay = 0 }) {
         onMouseLeave={(e) => {
           e.currentTarget.style.transform = "scale(1) translateY(0)";
           e.currentTarget.style.boxShadow = "0 1px 8px rgba(10,31,63,0.05)";
-          e.currentTarget.style.background = "rgba(255,255,255,0.9)";
+          e.currentTarget.style.background = "#fff";
         }}
       >
         {/* Inner container with relative positioning for Next.js Image 'fill' */}
@@ -58,7 +58,7 @@ export default function TrustBar() {
   return (
     <section
       id="partners"
-      className="py-20 lg:py-28 relative overflow-hidden bg-white border-b border-gray-100"
+      className="py-20 lg:py-28 relative overflow-hidden bg-brand-navy  border-b border-gray-100"
     >
       {/* Subtle background radial */}
       <div
@@ -80,7 +80,7 @@ export default function TrustBar() {
               </span>
               <div className="h-px w-8 bg-brand-orange/40" />
             </div>
-            <h2 className="font-heading font-bold text-2xl sm:text-4xl text-brand-navy">
+            <h2 className="font-heading font-bold text-2xl sm:text-4xl text-white">
               Backed by Global Technology Leaders
             </h2>
           </div>

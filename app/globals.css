@@ -171,7 +171,7 @@
   }
 
   /* ---- Scrollbar ---- */
-  ::-webkit-scrollbar {
+  /* ::-webkit-scrollbar {
     width: 8px;
   }
 
@@ -186,7 +186,7 @@
 
   ::-webkit-scrollbar-thumb:hover {
     background: rgb(10 31 63 / 0.5);
-  }
+  } */
 
   /* ---- Focus Styles ---- */
   a:focus-visible,
