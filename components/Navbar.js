@@ -45,15 +45,11 @@ export default function Navbar() {
       <nav
         className="fixed top-0 left-0 right-0 z-50 transition-all duration-300"
         style={{
-          background: isScrolled
-            ? "rgba(247,248,250,0.92)"
-            : "rgba(247,248,250,0.85)",
+          background:  "rgba(247,248,250,0.92)",
           backdropFilter: "blur(14px)",
           WebkitBackdropFilter: "blur(14px)",
-          borderBottom: isScrolled
-            ? "1px solid rgba(10,31,63,0.08)"
-            : "1px solid transparent",
-          boxShadow: isScrolled ? "0 1px 24px rgba(10,31,63,0.06)" : "none",
+          borderBottom: "1px solid rgba(10,31,63,0.08)",
+          boxShadow:"0 1px 24px rgba(10,31,63,0.06)",
         }}
       >
         <div className="max-w-7xl mx-auto px-5 sm:px-8 lg:px-10">

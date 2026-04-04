@@ -147,39 +147,7 @@ export default function Contact() {
                   </div>
                 </a>
 
-                {/* <a
-                  href="https://www.lionden.in"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center gap-4 group"
-                >
-                  <div className="w-12 h-12 rounded-xl bg-brand-orange/10 flex items-center justify-center group-hover:bg-brand-orange transition-colors duration-300">
-                    <Globe className="w-5 h-5 text-brand-orange group-hover:text-white transition-colors" />
-                  </div>
-                  <div>
-                    <div className="text-xs text-gray-500 uppercase tracking-wider">
-                      Website
-                    </div>
-                    <div className="text-white font-medium group-hover:text-brand-orange transition-colors">
-                      www.lionden.in
-                    </div>
-                  </div>
-                </a> */}
-
-                {/* <div className="flex items-center gap-4 group">
-                  <div className="w-12 h-12 rounded-xl bg-brand-orange/10 flex items-center justify-center group-hover:bg-brand-orange transition-colors duration-300">
-                    <MapPin className="w-5 h-5 text-brand-orange group-hover:text-white transition-colors" />
-                  </div>
-                  <div>
-                    <div className="text-xs text-gray-500 uppercase tracking-wider">
-                      Address
-                    </div>
-                    <div className="text-white font-medium group-hover:text-brand-orange transition-colors">
-                      #350, 1st Floor, 3rd Block Ganga Shopping Complex, Sector
-                      29 Noida, Uttar Pradesh 201301
-                    </div>
-                  </div>
-                </div> */}
+               
               </div>
             </div>
           </AnimatedSection>
