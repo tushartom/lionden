@@ -2,6 +2,8 @@
 
 import { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
+import Image from "next/image";
+import Logo from "./Logo";
 
 const navLinks = [
   { label: "Home", href: "#home" },
@@ -60,28 +62,10 @@ export default function Navbar() {
             <a
               href="#home"
               onClick={(e) => scrollToSection(e, "#home")}
-              className="flex items-center gap-3 group flex-shrink-0"
+              className="flex-shrink-0"
+              aria-label="Lionden Technologies — Home"
             >
-              <div
-                className="w-9 h-9 rounded-lg flex items-center justify-center transition-colors duration-200"
-                style={{ background: "#E8531E" }}
-              >
-                <span className="text-white font-black text-sm">L</span>
-              </div>
-              <div className="flex flex-col leading-none">
-                <span
-                  className="font-heading font-bold text-[15px] transition-colors duration-200"
-                  style={{ color: "#0A1F3F" }}
-                >
-                  Lionden
-                </span>
-                <span
-                  className="text-[9px] tracking-[0.2em] uppercase transition-colors duration-200"
-                  style={{ color: "rgba(10,31,63,0.40)" }}
-                >
-                  Technologies
-                </span>
-              </div>
+              <Logo variant="dark" size="default" />
             </a>
 
             {/* ── Desktop Nav Links ── */}
@@ -110,7 +94,7 @@ export default function Navbar() {
             {/* ── Desktop CTA ── */}
             <div className="hidden lg:flex items-center gap-4">
               {/* Secondary: subtle text link */}
-              <a
+              {/* <a
                 href="tel:+919810209261"
                 className="text-sm font-medium transition-colors duration-200"
                 style={{ color: "rgba(10,31,63,0.45)" }}
@@ -120,13 +104,13 @@ export default function Navbar() {
                 }
               >
                 +91-9810209261
-              </a>
+              </a> */}
 
               {/* Divider */}
-              <div
+              {/* <div
                 className="h-5 w-px"
                 style={{ background: "rgba(10,31,63,0.12)" }}
-              />
+              /> */}
 
               {/* Primary CTA */}
               <a
@@ -220,28 +204,7 @@ export default function Navbar() {
           style={{ borderBottom: "1px solid rgba(10,31,63,0.07)" }}
         >
           {/* Logo inside drawer */}
-          <div className="flex items-center gap-3">
-            <div
-              className="w-9 h-9 rounded-lg flex items-center justify-center"
-              style={{ background: "#E8531E" }}
-            >
-              <span className="text-white font-black text-sm">L</span>
-            </div>
-            <div className="flex flex-col leading-none">
-              <span
-                className="font-heading font-bold text-[15px]"
-                style={{ color: "#0A1F3F" }}
-              >
-                Lionden
-              </span>
-              <span
-                className="text-[9px] tracking-[0.2em] uppercase"
-                style={{ color: "rgba(10,31,63,0.40)" }}
-              >
-                Technologies
-              </span>
-            </div>
-          </div>
+          <Logo variant="dark" size="default" />
 
           <button
             onClick={() => setIsMobileOpen(false)}

@@ -43,7 +43,7 @@ export default function Hero() {
                 style={{ background: "rgba(10,31,63,0.25)" }}
               />
               <span
-                className="text-[11px] tracking-[0.25em] uppercase font-medium"
+                className="text-[12px] tracking-[0.2em] uppercase font-medium"
                 style={{ color: "rgba(10,31,63,0.45)" }}
               >
                 Since 2016 · India
@@ -156,14 +156,14 @@ export default function Hero() {
             <a
               href="#services"
               onClick={(e) => scrollToSection(e, "#services")}
-              className="group inline-flex items-center gap-3 text-sm font-medium transition-colors duration-200"
+              className="group inline-flex items-center gap-3 text-md font-medium transition-colors duration-200"
               style={{ color: "rgba(10,31,63,0.40)" }}
               onMouseEnter={(e) => (e.currentTarget.style.color = "#0A1F3F")}
               onMouseLeave={(e) =>
                 (e.currentTarget.style.color = "rgba(10,31,63,0.40)")
               }
             >
-              <ArrowDown className="w-4 h-4 group-hover:translate-y-0.5 transition-transform" />
+              <ArrowDown className="w-5 h-5 group-hover:translate-y-0.5 transition-transform" />
               Explore our approach
             </a>
           </div>
@@ -274,7 +274,7 @@ export default function Hero() {
             </div>
 
             <p
-              className="mt-5 text-xs text-center"
+              className="mt-5 text-sm text-center"
               style={{ color: "rgba(10,31,63,0.30)" }}
             >
               Cybersecurity · Network Optimization · IT Infrastructure

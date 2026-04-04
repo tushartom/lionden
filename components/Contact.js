@@ -115,20 +115,39 @@ export default function Contact() {
                   href="mailto:pankaj@lionden.in"
                   className="flex items-center gap-4 group"
                 >
-                  <div className="w-12 h-12 rounded-xl bg-brand-cyan/10 flex items-center justify-center group-hover:bg-brand-cyan transition-colors duration-300">
-                    <Mail className="w-5 h-5 text-brand-cyan group-hover:text-white transition-colors" />
+                  <div className="w-12 h-12 rounded-xl bg-brand-orange/10 flex items-center justify-center group-hover:bg-brand-orange transition-colors duration-300">
+                    <Mail className="w-5 h-5 text-brand-orange group-hover:text-white transition-colors" />
                   </div>
                   <div>
                     <div className="text-xs text-gray-500 uppercase tracking-wider">
                       Email
                     </div>
-                    <div className="text-white font-medium group-hover:text-brand-cyan transition-colors">
+                    <div className="text-white font-medium group-hover:text-brand-orange transition-colors">
                       pankaj@lionden.in
                     </div>
                   </div>
                 </a>
 
                 <a
+                  href="https://maps.app.goo.gl/EzZq8u1pv7RX5KkU7"
+                  className="flex items-center gap-4 group"
+                  target="_blank"
+                >
+                  <div className="w-12 h-12 rounded-xl bg-brand-orange/10 flex items-center justify-center group-hover:bg-brand-orange transition-colors duration-300">
+                    <MapPin className="w-5 h-5 text-brand-orange group-hover:text-white transition-colors" />
+                  </div>
+                  <div>
+                    <div className="text-xs text-gray-500 uppercase tracking-wider">
+                      Address
+                    </div>
+                    <div className="text-white font-medium group-hover:text-brand-orange transition-colors">
+                      #350, 1st Floor, 3rd Block Ganga Shopping Complex, <br />
+                      Sector 29 Noida, Uttar Pradesh 201301
+                    </div>
+                  </div>
+                </a>
+
+                {/* <a
                   href="https://www.lionden.in"
                   target="_blank"
                   rel="noopener noreferrer"
@@ -145,22 +164,22 @@ export default function Contact() {
                       www.lionden.in
                     </div>
                   </div>
-                </a>
+                </a> */}
 
-                <div className="flex items-center gap-4">
-                  <div className="w-12 h-12 rounded-xl bg-brand-cyan/10 flex items-center justify-center">
-                    <MapPin className="w-5 h-5 text-brand-cyan" />
+                {/* <div className="flex items-center gap-4 group">
+                  <div className="w-12 h-12 rounded-xl bg-brand-orange/10 flex items-center justify-center group-hover:bg-brand-orange transition-colors duration-300">
+                    <MapPin className="w-5 h-5 text-brand-orange group-hover:text-white transition-colors" />
                   </div>
                   <div>
                     <div className="text-xs text-gray-500 uppercase tracking-wider">
                       Address
                     </div>
-                    <div className="text-white font-medium">
+                    <div className="text-white font-medium group-hover:text-brand-orange transition-colors">
                       #350, 1st Floor, 3rd Block Ganga Shopping Complex, Sector
                       29 Noida, Uttar Pradesh 201301
                     </div>
                   </div>
-                </div>
+                </div> */}
               </div>
             </div>
           </AnimatedSection>

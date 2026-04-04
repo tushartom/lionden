@@ -2,6 +2,7 @@
 
 import { Shield, Phone, Mail, Globe, ArrowUp } from "lucide-react";
 import { FaLinkedinIn } from "react-icons/fa";
+import Logo from "./Logo";
 const footerLinks = {
   services: [
     { label: "Information Security", href: "#services" },
@@ -40,27 +41,17 @@ export default function Footer() {
               onClick={(e) => scrollToSection(e, "#home")}
               className="flex items-center gap-3 mb-4"
             >
-              <div className="w-10 h-10 rounded-lg bg-brand-orange flex items-center justify-center">
-                <Shield className="w-6 h-6 text-white" />
-              </div>
-              <div>
-                <span className="font-heading font-bold text-lg text-white">
-                  Lionden
-                </span>
-                <span className="block text-[10px] tracking-widest uppercase text-gray-500">
-                  Technologies Pvt. Ltd.
-                </span>
-              </div>
+               <Logo variant="light" size="default" />
             </a>
-            <p className="text-xs uppercase tracking-[0.15em] text-brand-orange mb-4">
+            {/* <p className="text-xs uppercase tracking-[0.15em] text-brand-orange mb-4">
               Collaborate · Innovate · Execute
-            </p>
+            </p> */}
             <p className="text-sm leading-relaxed mb-6">
               Empowering enterprises with cybersecurity, network optimization,
               and IT infrastructure solutions since 2016.
             </p>
             {/* Social */}
-            <div className="flex gap-3">
+            {/* <div className="flex gap-3">
               <a
                 href="https://www.linkedin.com/company/lionden-technologies"
                 target="_blank"
@@ -70,7 +61,7 @@ export default function Footer() {
               >
                 <FaLinkedinIn className="w-4 h-4" />
               </a>
-            </div>
+            </div> */}
           </div>
 
           {/* Column 2 — Services */}
@@ -137,7 +128,7 @@ export default function Footer() {
                   pankaj@lionden.in
                 </a>
               </li>
-              <li>
+              {/* <li>
                 <a
                   href="https://www.lionden.in"
                   target="_blank"
@@ -147,7 +138,7 @@ export default function Footer() {
                   <Globe className="w-4 h-4 text-brand-orange flex-shrink-0" />
                   www.lionden.in
                 </a>
-              </li>
+              </li> */}
             </ul>
           </div>
         </div>
@@ -173,13 +164,13 @@ export default function Footer() {
             >
               Terms of Service
             </a>
-            <button
+            {/* <button
               onClick={scrollToTop}
               className="w-8 h-8 rounded-lg bg-white/5 flex items-center justify-center hover:bg-brand-orange transition-all duration-200 group"
               aria-label="Scroll to top"
             >
               <ArrowUp className="w-4 h-4 group-hover:text-white" />
-            </button>
+            </button> */}
           </div>
         </div>
       </div>
