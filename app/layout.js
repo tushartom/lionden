@@ -1,5 +1,7 @@
 import { Inter, Poppins, Space_Grotesk } from "next/font/google";
 import "./globals.css";
+import LoadingScreen from "@/components/LoadingScreen";
+import CustomCursor from "@/components/CustomCursor";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -8,7 +10,7 @@ const inter = Inter({
 });
 
 const poppins = Poppins({
-  weight: ["400", "500", "600", "700", "800"],
+  weight: ["300", "400", "500", "600", "700", "800"],
   subsets: ["latin"],
   variable: "--font-poppins",
   display: "swap",
@@ -24,16 +26,6 @@ export const metadata = {
   title: "Lionden Technologies Pvt. Ltd. | Cybersecurity & IT Solutions",
   description:
     "Lionden Technologies delivers end-to-end IT services, cybersecurity solutions, network optimization, and system integration to help enterprises achieve digital excellence.",
-  keywords:
-    "cybersecurity, IT solutions, network security, system integration, India, enterprise security, Lionden Technologies",
-  openGraph: {
-    title: "Lionden Technologies Pvt. Ltd.",
-    description:
-      "Empowering businesses with seamless technology ecosystems that drive performance, security, and scalability.",
-    url: "https://www.lionden.in",
-    siteName: "Lionden Technologies",
-    type: "website",
-  },
 };
 
 export default function RootLayout({ children }) {
@@ -42,7 +34,11 @@ export default function RootLayout({ children }) {
       lang="en"
       className={`${inter.variable} ${poppins.variable} ${spaceGrotesk.variable}`}
     >
-      <body className="font-sans">{children}</body>
+      <body className="font-sans">
+        <LoadingScreen />
+        <CustomCursor />
+        {children}
+      </body>
     </html>
   );
 }
